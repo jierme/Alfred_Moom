@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.alfredapps.Moom</string>
+	<key>category</key>
+	<string>Productivity</string>
+	<key>connections</key>
+	<dict>
+		<key>6B4BBB8F-B7AD-4FD6-A5E2-058C8B7A315F</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>753561E4-7103-4249-8048-E536147A9909</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>753561E4-7103-4249-8048-E536147A9909</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>77FCBE1A-71E7-45A6-8890-758A45EA0EAD</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>C87D3B34-1281-4069-BCA5-8EFAC950D53C</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>6B4BBB8F-B7AD-4FD6-A5E2-058C8B7A315F</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Dian</string>
+	<key>description</key>
+	<string>Arrange windows according to saved snapshot in Moom</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Moom</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>triggerid</key>
+				<string>showLayouts</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.external</string>
+			<key>uid</key>
+			<string>C87D3B34-1281-4069-BCA5-8EFAC950D53C</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<true/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>2</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>keyword</key>
+				<string>layouts</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>获取布局</string>
+				<key>script</key>
+				<string>run script "moom_layout.applescript" with parameters {"showLayouts"}</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>列出所有保存的布局</string>
+				<key>title</key>
+				<string>Moom Layouts</string>
+				<key>type</key>
+				<integer>6</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>6B4BBB8F-B7AD-4FD6-A5E2-058C8B7A315F</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>on run argv
+	tell application "Moom" 
+    		arrange windows according to snapshot named argv 
+	end tell
+end run</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>6</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>77FCBE1A-71E7-45A6-8890-758A45EA0EAD</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>{query}</string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict>
+					<key>Layout</key>
+					<string>{query}</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>753561E4-7103-4249-8048-E536147A9909</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>Use instructions:
+1) Save some snapshots with the Moom app.
+2) Open Alfred and type "layouts". 
+3) Select one of the options and press Enter to activate a saved window layout.
+
+Notes:
+I write this workflow for my use.
+Most of the scripts were just adjusted from the workflow alfred-things.
+(https://github.com/xilopaint/alfred-things)</string>
+	<key>uidata</key>
+	<dict>
+		<key>6B4BBB8F-B7AD-4FD6-A5E2-058C8B7A315F</key>
+		<dict>
+			<key>note</key>
+			<string>Show Lists</string>
+			<key>xpos</key>
+			<integer>300</integer>
+			<key>ypos</key>
+			<integer>125</integer>
+		</dict>
+		<key>753561E4-7103-4249-8048-E536147A9909</key>
+		<dict>
+			<key>xpos</key>
+			<integer>490</integer>
+			<key>ypos</key>
+			<integer>155</integer>
+		</dict>
+		<key>77FCBE1A-71E7-45A6-8890-758A45EA0EAD</key>
+		<dict>
+			<key>xpos</key>
+			<integer>575</integer>
+			<key>ypos</key>
+			<integer>125</integer>
+		</dict>
+		<key>C87D3B34-1281-4069-BCA5-8EFAC950D53C</key>
+		<dict>
+			<key>xpos</key>
+			<integer>100</integer>
+			<key>ypos</key>
+			<integer>125</integer>
+		</dict>
+	</dict>
+	<key>version</key>
+	<string>0.1</string>
+	<key>webaddress</key>
+	<string>https://www.alfredapp.com</string>
+</dict>
+</plist>
